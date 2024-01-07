@@ -81,6 +81,6 @@ if __name__ == "__main__":
               file=stdout)
     else:
         print(f"Usage: python3 {argv[0]} "+
-              "--create < secret_key.txt", file=stderr)
+              "--create < secret-key.txt", file=stderr)
         print(f"   or: python3 {argv[0]} "+
-              "--verify frag-id < secret_key.txt", file=stderr)
+              "--verify frag-id < secret-key.txt", file=stderr)
