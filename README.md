@@ -10,6 +10,6 @@ Once a frag-id is created
 
 As long as the h-id is not compromised, it is virtually impossible to validate a frag-id solely from the public f-id.
 
-This enables each user to build a reputation within the system using their own f-id, with the assurance that these anonymous identifiers are extremely difficult to forge.
+This enables each user to build a reputation within the system using their provided f-id, with the assurance that these anonymous identifiers are extremely difficult to forge.
 
 One user may use multiple f-ids, but each f-id is used by one user only.
