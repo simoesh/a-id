@@ -35,18 +35,18 @@ def create(secret_key):
         c3 = b64chars[i3]
         h_id += f"{c0}{c1}{c2}{c3}"
     secret_key = secret_key.encode('utf-8')
-    x4_f_id = sha3_256(secret_key+bits+secret_key).digest()
-    f_id = ""
-    for j in range(int(len(x4_f_id)/4)):
-        b = (x4_f_id[j*4+0]^x4_f_id[j*4+1]^x4_f_id[j*4+2]^x4_f_id[j*4+3])
-        f_id += hexachars[(b&0xf0)>>4]+hexachars[b&0x0f]
-    return f"{f_id}{h_id}"
+    x4_a_id = sha3_256(secret_key+bits+secret_key).digest()
+    a_id = ""
+    for j in range(int(len(x4_a_id)/4)):
+        b = (x4_a_id[j*4+0]^x4_a_id[j*4+1]^x4_a_id[j*4+2]^x4_a_id[j*4+3])
+        a_id += hexachars[(b&0xf0)>>4]+hexachars[b&0x0f]
+    return f"{a_id}{h_id}"
 
-def verify(secret_key, frag_id):
+def verify(secret_key, anon_id):
     from struct import pack
-    if len(frag_id) != 16+RANDOM_BYTES_DIV_3*4: return False
-    v_id = frag_id[0:16]
-    h_id = frag_id[16:]
+    if len(anon_id) != 16+RANDOM_BYTES_DIV_3*4: return False
+    v_id = anon_id[0:16]
+    h_id = anon_id[16:]
     bits = b""
     for j in range(int(len(h_id)/4)):
         c0 = h_id[j*4+0]
@@ -65,12 +65,12 @@ def verify(secret_key, frag_id):
         b2 = ((i3&0x3f)<<2)+((i2&0x30)>>4)
         bits += pack("BBB", b0, b1, b2)
     secret_key = secret_key.encode('utf-8')
-    x4_f_id = sha3_256(secret_key+bits+secret_key).digest()
-    f_id = ""
-    for j in range(int(len(x4_f_id)/4)):
-        b = (x4_f_id[j*4+0]^x4_f_id[j*4+1]^x4_f_id[j*4+2]^x4_f_id[j*4+3])
-        f_id += hexachars[(b&0xf0)>>4]+hexachars[b&0x0f]
-    return (v_id == f_id)
+    x4_a_id = sha3_256(secret_key+bits+secret_key).digest()
+    a_id = ""
+    for j in range(int(len(x4_a_id)/4)):
+        b = (x4_a_id[j*4+0]^x4_a_id[j*4+1]^x4_a_id[j*4+2]^x4_a_id[j*4+3])
+        a_id += hexachars[(b&0xf0)>>4]+hexachars[b&0x0f]
+    return (v_id == a_id)
 
 if __name__ == "__main__":
     from sys import argv
@@ -83,4 +83,4 @@ if __name__ == "__main__":
         print(f"Usage: python3 {argv[0]} "+
               "--create < secret-key.txt", file=stderr)
         print(f"   or: python3 {argv[0]} "+
-              "--verify frag-id < secret-key.txt", file=stderr)
+              "--verify anon-id < secret-key.txt", file=stderr)
