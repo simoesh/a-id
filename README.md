@@ -1,5 +1,5 @@
 # a-id
-Based on the original [BZID](https://hugosimoes.info/blog/2022/02/12/crosspollinator-daily-global-challenge/), [a-id](https://hugosimoes.info/a-id/) is an anonymous cryptographic secure identifier.
+Based on the original [BZID](https://hugosimoes.info/blog-20220212-crosspollinator-daily-global-challenge/), [a-id](https://hugosimoes.info/a-id/) is an anonymous cryptographic secure identifier.
 
 An anon-id is composed of two parts: an a-id (public, username, 16 characters) and an h-id (private, password, 32 characters).
 
