@@ -14,6 +14,6 @@ This enables each user to build a reputation within a website/app using their pr
 
 One user may use multiple a-ids, but each a-id is used by one user only.
 
-Example of a website using this concept of anonymous identifiers on its leaderboards: [Cross-Pollinator](https://hugosimoes.info/crosspollinator/).
+Examples of websites using this concept of anonymous identifiers on their leaderboards: [Cross-Pollinator](https://hugosimoes.info/crosspollinator/), [AlgoDeduce](https://prequel-lang.org/algodeduce/).
 
 Note that the actual a-id representation (image or avatar) can vary to fit the website/app graphic design.
